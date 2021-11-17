@@ -147,7 +147,7 @@ class Events
         $space->moduleManager->enable('polls');
 
         // Switch Identity
-        $user = User::find()->where(['id' => 1])->one();
+        $user = User::find()->orderBy(['id' => SORT_ASC])->one();
         Yii::$app->user->switchIdentity($user);
 
         $poll = new Poll();
@@ -167,8 +167,8 @@ class Events
         }
 
         // load users
-        $user2 = User::find()->where(['id' => 2])->one();
-        $user3 = User::find()->where(['id' => 3])->one();
+        $user2 = User::find()->where(['username' => 'david1986'])->one();
+        $user3 = User::find()->where(['username' => 'sara1989'])->one();
 
         // Switch Identity
         Yii::$app->user->switchIdentity($user2);
